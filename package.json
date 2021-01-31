@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/goranjako/node.js-typeorm-grapql-jwt-auth/issues"
   },
-  "homepage": "https://github.com/goranjako/node.js-typeorm-grapql-jwt-auth#readme"
+  "homepage": "https://github.com/goranjako/node.js-typeorm-grapql-jwt-auth#readme",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
 }
