@@ -2,7 +2,7 @@ import { UserInputError } from 'apollo-server-express'
 import { getRepository } from "typeorm";
 import bcrypt from 'bcrypt-nodejs';
 import auth from '../config/auth';
-
+import {signIn,signUp} from '../config/verify';
 import jwt from 'jsonwebtoken';
 
 import dotenv from 'dotenv';
@@ -36,10 +36,10 @@ const user ={
           }
       },
       login: async (paren:any,{input}: any,{User}:any) => {
-       // await signIn.validate(input, {abortEarly: false});
+        await signIn.validate(input, {abortEarly: false});
        const userRepository = getRepository(User)
         try{
-          const finduser= await userRepository.findOne({email:input.email});;
+          const finduser:any= await userRepository.findOne({email:input.email});
           if(!finduser){
             throw new UserInputError('User  not found');
           } 
@@ -62,7 +62,7 @@ const user ={
     Mutation: {
     
       register: async (paren:any,{input}:any,{User}:any) => {
-          //await signUp.validate(input, {abortEarly: false});
+          await signUp.validate(input, {abortEarly: false});
           const userRepository = getRepository(User)
           
         try{
